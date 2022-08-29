@@ -1,0 +1,17 @@
+syntax = 'proto3';
+
+package api.v1;
+
+option go_package = "github.com/andrey-berenda/go-filestorage/gen/api/v1;api";
+
+service FileService {
+  rpc Download(DownloadRequest) returns(stream DownloadResponse);
+}
+
+message DownloadRequest{
+  string id = 1;
+}
+
+message DownloadResponse{
+  bytes chunk = 1;
+}
